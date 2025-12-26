@@ -1,1 +1,81 @@
+create database vehical;
+use vehical;
+-- 1️⃣ Create Customers Table
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Country VARCHAR(50)
+);
+
+-- Insert 10 Customers
+INSERT INTO Customers VALUES
+(1, 'John', 'Doe', 'john.doe@gmail.com', 'USA'),
+(2, 'Priya', 'Sharma', 'priya.sharma@gmail.com', 'India'),
+(3, 'David', 'Lee', 'david.lee@yahoo.com', 'Canada'),
+(4, 'Maria', 'Garcia', 'maria.garcia@gmail.com', 'Mexico'),
+(5, 'Chen', 'Wang', 'chen.wang@yahoo.com', 'China'),
+(6, 'Amit', 'Patel', 'amit.patel@gmail.com', 'India'),
+(7, 'Sophia', 'Brown', 'sophia.brown@gmail.com', 'UK'),
+(8, 'Liam', 'Johnson', 'liam.johnson@gmail.com', 'USA'),
+(9, 'Olivia', 'Martinez', 'olivia.martinez@yahoo.com', 'Spain'),
+(10, 'Noah', 'Kim', 'noah.kim@gmail.com', 'South Korea');
+
+
+-- 2️⃣ Create Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Category VARCHAR(50),
+    UnitPrice DECIMAL(10,2)
+);
+
+-- Insert 10 Products
+INSERT INTO Products VALUES
+(101, 'Mountain Bike', 'Bikes', 1200.00),
+(102, 'Helmet', 'Accessories', 50.00),
+(103, 'Gloves', 'Accessories', 25.00),
+(104, 'Road Bike', 'Bikes', 1500.00),
+(105, 'Water Bottle', 'Accessories', 15.00),
+(106, 'Cycling Shoes', 'Apparel', 120.00),
+(107, 'Bike Lock', 'Accessories', 35.00),
+(108, 'Jersey', 'Apparel', 45.00),
+(109, 'Sunglasses', 'Accessories', 60.00),
+(110, 'Bike Pump', 'Tools', 30.00);
+
+
+-- 3️⃣ Create Orders Table (Connecting Customers & Products)
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    OrderDate DATE,
+    CustomerID INT,
+    ProductID INT,
+    Quantity INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+-- Insert 15 Orders
+INSERT INTO Orders VALUES
+(1001, '2023-07-15', 1, 101, 2),
+(1002, '2023-07-16', 2, 102, 3),
+(1003, '2023-07-17', 3, 103, 5),
+(1004, '2023-07-18', 4, 104, 1),
+(1005, '2023-07-19', 5, 105, 4),
+(1006, '2023-07-20', 6, 106, 2),
+(1007, '2023-07-21', 7, 107, 1),
+(1008, '2023-07-22', 8, 108, 3),
+(1009, '2023-07-23', 9, 109, 2),
+(1010, '2023-07-24', 10, 110, 4),
+(1011, '2023-07-25', 1, 102, 1),
+(1012, '2023-07-26', 2, 103, 2),
+(1013, '2023-07-27', 3, 104, 1),
+(1014, '2023-07-28', 4, 105, 3),
+(1015, '2023-07-29', 5, 106, 1);
+show tables;
+select * from customers;
+select * from Products;
+select * from orders;
 
